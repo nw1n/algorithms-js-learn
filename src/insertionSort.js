@@ -22,6 +22,6 @@ function insertionSort(srcArr) {
   return srcArr
 }
 
-const unsortedArr = [5,4,3,2,1,7,8,9,6]
+const unsortedArr = [5,4,3,2,1,7,8,9,6,1,9,1]
 
 console.log(insertionSort(unsortedArr))
