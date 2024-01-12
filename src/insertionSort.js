@@ -1,5 +1,8 @@
 function insertionSort(srcArr) {
-  for(let i = 0; i < 99; i++) {
+  let round = 1;
+  let isCompletedWithoutSwamp = false;
+  while(isCompletedWithoutSwamp === false) {
+    isCompletedWithoutSwamp = true
     for(let iOuter = 1; iOuter < srcArr.length; iOuter++) {
       const mainVal = srcArr[iOuter]
       for(let iInner = 1; iInner <= iOuter; iInner++) {
@@ -10,14 +13,15 @@ function insertionSort(srcArr) {
             const temp = srcArr[shiftI + 1]
             srcArr[shiftI + 1] = srcArr[shiftI]
             srcArr[shiftI] = temp
+            isCompletedWithoutSwamp = false;
           }
         } else {
           break;
         }
-        console.log('leftNeighborVal')
-        console.log(leftNeighborVal)
       }
     }
+    console.log('Completed sort round: ' + round)
+    round++;
   }
   return srcArr
 }
