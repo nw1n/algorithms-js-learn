@@ -42,6 +42,30 @@ function bubbleSort(srcArr) {
   return arr
 }
 
+// this is the chatGPT version of the function above.
+function bubbleSortByChatGPT(srcArr) {
+  const arrayCopy = srcArr.slice();
+  let isSorted = false;
+  let end = arrayCopy.length - 1;
+
+  while (!isSorted && end >= 0) {
+      isSorted = true;
+
+      for (let i = 0; i < end; i++) {
+          if (arrayCopy[i] > arrayCopy[i + 1]) {
+              [arrayCopy[i], arrayCopy[i + 1]] = [arrayCopy[i + 1], arrayCopy[i]]; // Destructuring for swapping
+              isSorted = false;
+          }
+      }
+
+      end = end - 1;
+  }
+
+  return arrayCopy;
+}
+
 const exampleArr = [1,2,3,4,5,6,7,8,9]
 
 console.log(bubbleSort(exampleArr))
+
+
