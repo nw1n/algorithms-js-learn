@@ -4,7 +4,8 @@ works something like this: you start with the left most element (skipp first) an
 left neighbor. if it is bigger or equal than the left neighbor then don't do anything and go to the next number (the original element spot's right neighbor.)
 if it's smaller go look to the next neighbor and so forth until you encounter a left-neighnor that is bigger or you reach the beginning of the array. at this
 position insert the original value (save in tmp variable first for insertion) after you moved all elements between its new index and its original
-index one index up in the array. This description may be not 100% correct.
+index one index up in the array. This description may be not 100% correct. It seems actually, that the two numbers swap places on the way down, not all get
+moved up together in the end.
 */
 
 function insertionSortChatGpt(arr) {
