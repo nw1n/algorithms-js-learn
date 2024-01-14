@@ -60,6 +60,28 @@ function insertionSort(srcArr) {
   return srcArr
 }
 
-const unsortedArr = [5,4,3,2,1,7,8,9,6,1,9,1]
+function insertionSort2(arr) {
+  let temp
+  const n = arr.length
+  let insertI
+  for(let i = 1; i < n; i++) {
+    temp = arr[i]
+    insertI = i
+    for(let j = i-1; j > -1; j--) {
+      if(arr[j] > temp) {
+        arr[j+1] = arr[j]
+        insertI = j
+      } else {
+        break;
+      }
+    } 
+    arr[insertI] = temp
+  }
+  return arr
+}
 
-console.log(insertionSort(unsortedArr))
+const unsortedArr = [5,4,3,2,9,1,8,2,8,2]
+
+console.log(insertionSort2(unsortedArr.slice()))
+
+//console.log(insertionSort(unsortedArr))
