@@ -19,5 +19,6 @@ function fibonacci(n) {
   return arr
 }
 
-console.log(fibonacci(2))
+console.log(fibonacci(10))
+console.log(fibonacciIterativeByChatGPT(10))
 
