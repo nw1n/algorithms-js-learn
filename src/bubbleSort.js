@@ -7,7 +7,7 @@ then do the same again until sencond last element (there is no right neighbor fo
 if the element was the largest element in the array it would be move ("bubbled up") to the last spot in the arrray
 in first round since it always gets swapped again and again. If it another element along the way is bigger, then
 the procedure would leave the first where it is and bubble up this next element.
-so multiple rounds are usually necessary to finish all the sorting.
+So multiple rounds are usually necessary to finish all the sorting. (99% sure about this)
 On each sort, the biggest element in the array will be moved to the end.
 For each procedure we therefore have to go less far up the array. e.g. first until array.length-1, second array.length-2 etc.
 Not sure how to best find out when done, maybe just use a isFinished bool that checks if any swaps have been done, if not exit loop.
@@ -44,16 +44,16 @@ function bubbleSort(srcArr) {
 
 // this is the chatGPT version of the function above.
 function bubbleSortByChatGPT(srcArr) {
-  const arrayCopy = srcArr.slice();
+  const arr = srcArr.slice();
   let isSorted = false;
-  let end = arrayCopy.length - 1;
+  let end = arr.length - 1;
 
   while (!isSorted && end >= 0) {
       isSorted = true;
 
       for (let i = 0; i < end; i++) {
-          if (arrayCopy[i] > arrayCopy[i + 1]) {
-              [arrayCopy[i], arrayCopy[i + 1]] = [arrayCopy[i + 1], arrayCopy[i]]; // Destructuring for swapping
+          if (arr[i] > arr[i + 1]) {
+              [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]; // Destructuring for swapping
               isSorted = false;
           }
       }
@@ -61,7 +61,7 @@ function bubbleSortByChatGPT(srcArr) {
       end = end - 1;
   }
 
-  return arrayCopy;
+  return arr;
 }
 
 const exampleArr = [1,2,3,4,5,6,7,8,9]
