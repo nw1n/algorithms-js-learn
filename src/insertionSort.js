@@ -83,18 +83,18 @@ function insertionSort3(arr) {
   const n = arr.length
   let temp
   let insertIndex
-  let j
 
   for(let i = 1; i < n; i++) {
     temp = arr[i]
-    j = i - 1;
     insertIndex = i
+    let j = i - 1;
 
     while(j >= 0 && temp < arr[j]) {
       arr[j+1] = arr[j]
       insertIndex = j
       j--
     }
+    
     arr[insertIndex] = temp
   }
 
