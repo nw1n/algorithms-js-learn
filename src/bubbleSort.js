@@ -43,7 +43,7 @@ function bubbleSort(srcArr) {
 }
 
 // this is the chatGPT version of the function above.
-function bubbleSortByChatGPT(srcArr) {
+function myBubbleSorImporvedByChatGPT(srcArr) {
   const arr = srcArr.slice();
   let isSorted = false;
   let end = arr.length - 1;
@@ -64,8 +64,63 @@ function bubbleSortByChatGPT(srcArr) {
   return arr;
 }
 
-const exampleArr = [1,2,3,4,5,6,7,8,9]
+function bubbleSortByChatGPT(arr) {
+  const n = arr.length;
 
-console.log(bubbleSort(exampleArr))
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // Swap arr[j] and arr[j + 1]
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
 
+  return arr;
+}
+
+// chatGPT approves of this version i made. just laments that a for-loop might be semanticly prettier than while loop.
+function bubbleSort2(arr) {
+  const n = arr.length
+  let end = n - 1
+  let temp
+
+  while(end > 0) {
+    for(let i = 0; i < end; i++) {
+      if(arr[i] > arr[i+1]) {
+        temp = arr[i]
+        arr[i] = arr[i+1]
+        arr[i+1] = temp
+      }
+    }
+    end--
+  }
+  return arr
+}
+
+/*
+## chat gpts comment on my implementation bubbleSort2 compared to his
+
+YOU:
+is this true: bubbleSort2 aborts the swapping earlier on each iteration, while bubbleSort always checks the swapps on all elements,
+even though it is unnecessary
+
+ChatGPT:
+Yes, your observation is correct. The key difference lies in how the two implementations handle the loop conditions and when they decide to stop
+swapping. In bubbleSort, the inner loop always checks all elements in the unsorted portion of the array, even if the largest unsorted element has
+already been moved to its correct position in the last iteration. This means that the algorithm performs unnecessary comparisons in each pass.
+
+On the other hand, in bubbleSort2, the while loop condition checks if any swapping occurred during the current iteration (if (arr[i] > arr[i + 1])).
+If no swapping occurs during an iteration, it means that the array is already sorted, and the algorithm can exit early.
+This optimization can potentially make bubbleSort2 more efficient in terms of reducing the number of unnecessary comparisons.
+
+So, bubbleSort2 can be seen as a slight improvement over bubbleSort in terms of early termination when the array is already sorted.
+This improvement may make bubbleSort2 more efficient in certain cases, especially if the array is partially sorted or nearly sorted.
+However, in the worst case (when the array is completely unsorted), both implementations have the same time complexity of O(n^2).
+
+*/
+
+const exampleArr = [7,3,2,8,1,9,3,1,9,4,7,2]
+
+console.log(bubbleSort2(exampleArr))
 
