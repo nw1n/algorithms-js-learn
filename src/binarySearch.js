@@ -46,14 +46,12 @@ function binarySearchLoop(hayStack, needle) {
 }
 
 function binarySearchLoop2(hayStack, needle) {
-  const n = hayStack.length
   let start = 0
-  let end = n
+  let end = hayStack.length
   let middleIndex
-  let needleIndex
 
   while(true) {
-    middleIndex = Math.floor((end + start) / 2) // tricky tiny bit
+    middleIndex = Math.floor((end + start) / 2) // seems weird at first, but makes sense. last element would be (10+10) / 20
 
     const middleValue = hayStack[middleIndex]
 
@@ -71,11 +69,9 @@ function binarySearchLoop2(hayStack, needle) {
       return undefined
     }
   }
-
-  return needleIndex
 }
 
-const exampleArr = [1,2,3,4,5,6,7,8,9,10]
+const exampleArr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
 console.log('result')
-console.log(binarySearchLoop2(exampleArr, 10))
+console.log(binarySearchLoop2(exampleArr, 19))
