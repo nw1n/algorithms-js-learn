@@ -79,8 +79,32 @@ function insertionSort2(arr) {
   return arr
 }
 
-const unsortedArr = [5,4,3,2,9,1,8,2,8,2]
+function insertionSort3(arr) {
+  const n = arr.length
+  let temp
 
-console.log(insertionSort2(unsortedArr.slice()))
+  for(let i = 1; i < n; i++) {
+    temp = arr[i]
+    let j = i - 1;
+    let insertIndex = i
+    while(j >= 0) {
+      console.log('j', j)
+      if(arr[i] < arr[j]) {
+        console.log('cond met:')
+        console.log(j, ':', arr[j])
+        arr[j+1] = arr[j]
+        insertIndex = j
+      }
+      j--
+    }
+    arr[insertIndex] = temp
+  }
+
+  return arr
+}
+
+const unsortedArr = [2,9,1]
+
+console.log(insertionSort3(unsortedArr.slice()))
 
 //console.log(insertionSort(unsortedArr))
