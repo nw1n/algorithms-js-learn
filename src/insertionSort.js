@@ -79,23 +79,29 @@ function insertionSort2(arr) {
   return arr
 }
 
+// NW: Solution understood completely built myself
 function insertionSort3(arr) {
   const n = arr.length
-  let temp
-  let insertIndex
 
   for(let i = 1; i < n; i++) {
-    temp = arr[i]
-    insertIndex = i
+    // temp val needs to be stored to variable first, because otherwise we loose it when we shift the sorted array part on its left to the right.
+    const temp = arr[i]
+
+    // j starts with the first element to the leff of temp
     let j = i - 1;
 
+    // while loop traveersing down the list.
+    // we shift the smaller items from the sorted part on the left to the right into the spot where the temp element was
+    // here it is important that we compare arr[j] with temp and not with arr[i], since it gets overwritten by the shift
+    // we add "j >= 0" because we dont want to go out of array bounds.
     while(j >= 0 && temp < arr[j]) {
       arr[j+1] = arr[j]
-      insertIndex = j
       j--
     }
-    
-    arr[insertIndex] = temp
+
+    // at the end we insert our temp element at the j position where was the last element we shifted to the right.
+    // since we did a final j-- in the while loop we need to reverse this by using arr[j+1] instead of arr[j]
+    arr[j+1] = temp 
   }
 
   return arr
