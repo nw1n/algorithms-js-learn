@@ -45,7 +45,37 @@ function binarySearchLoop(hayStack, needle) {
   }
 }
 
+function binarySearchLoop2(hayStack, needle) {
+  const n = hayStack.length
+  let start = 0
+  let end = n
+  let middleIndex
+  let needleIndex
+
+  while(true) {
+    middleIndex = Math.floor((end + start) / 2) // tricky tiny bit
+
+    const middleValue = hayStack[middleIndex]
+
+    if(middleValue === needle) {
+      return middleIndex
+    }
+
+    if(middleValue < needle) {
+      start = middleIndex + 1
+    } else {
+      end = middleIndex - 1
+    }
+
+    if(end <= start) {
+      return undefined
+    }
+  }
+
+  return needleIndex
+}
+
 const exampleArr = [1,2,3,4,5,6,7,8,9,10]
 
 console.log('result')
-console.log(binarySearchLoop(exampleArr, 10))
+console.log(binarySearchLoop2(exampleArr, 10))
