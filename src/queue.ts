@@ -27,13 +27,58 @@ class QueueByChatGPT<T> {
   }
 }
 
+//const queue = new QueueByChatGPT()
+//console.log(queue.isEmpty)
+//queue.enqueue('a')
+//queue.enqueue('b')
+//console.log(queue)
+//console.log(queue.isEmpty())
+//console.log(queue.front())
+//console.log(queue.dequeue())
+//console.log(queue)
 
-const queue = new QueueByChatGPT()
-console.log(queue.isEmpty)
-queue.enqueue('a')
-queue.enqueue('b')
+class QueueItem {
+  public next:QueueItem
+  public previous:QueueItem
+  public content:any
+
+  constructor(content?) {
+    this.content = content ?? content
+  }
+}
+class Queue {
+  private head:QueueItem
+  private tail:QueueItem
+  public length:number = 0
+
+  peek() {
+    return this.tail;
+  }
+
+  enqueue(content) {
+    const item = new QueueItem(content)
+    if(this.length === 0) {
+      this.head = this.tail = item
+      this.length++
+      return this
+    }
+    item.next = this.head
+    this.head.previous = item
+    this.head = item
+    this.length++
+    return this
+  }
+}
+
+const queue = new Queue()
 console.log(queue)
-console.log(queue.isEmpty())
-console.log(queue.front())
-console.log(queue.dequeue())
-console.log(queue)
+//const item1 = new QueueItem('one')
+//const item2 = new QueueItem('two')
+//const item3 = new QueueItem('three')
+//console.log(item1)
+queue.enqueue('one')
+queue.enqueue('two')
+queue.enqueue('three')
+console.log(queue);
+console.log(queue.peek().content)
+console.log(queue.peek().previous.content)
