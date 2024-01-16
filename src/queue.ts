@@ -76,11 +76,18 @@ class Queue {
     if(this.length === 1) {
       const item = this.tail as QueueItem
       this.tail = this.head = undefined
+      this.length--
       return item.content
     }
     const tail = this.tail as QueueItem
     this.tail = tail.previous
+    this.length--
     return tail.content
+  }
+
+  clear() {
+    this.head = this.tail = undefined
+    this.length = 0
   }
 }
 
@@ -97,4 +104,9 @@ console.log(queue.peek())
 queue.enqueue('four')
 console.log(queue.peek())
 console.log(queue.dequeue())
+console.log(queue.peek())
+queue.enqueue('five')
+queue.clear()
+console.log(queue.peek())
+queue.enqueue('six')
 console.log(queue.peek())
