@@ -38,39 +38,38 @@ class QueueByChatGPT<T> {
 //console.log(queue)
 
 class QueueItem {
-  public next:QueueItem | undefined
-  public previous:QueueItem | undefined
+  public next?: QueueItem
+  public previous?: QueueItem
   public content:any
 
-  constructor(content?) {
-    this.content = content ?? content
+  constructor(content: any) {
+    this.content = content
   }
 }
 class Queue {
   private head?: QueueItem
   private tail?: QueueItem
-  public length:number = 0
+  public length : number = 0
 
-  peek() {
+  peek(): any {
     return this.tail ? this.tail.content : null;
   }
 
-  enqueue(content) {
+  enqueue(content: any) {
     const item = new QueueItem(content)
     if(this.length === 0) {
       this.head = this.tail = item
       this.length++
-      return this
+      return
     }
     const head = this.head as QueueItem
     item.next = head
     head.previous = item
     this.head = item
     this.length++
-    return this
   }
 
-  dequeue() {
+  dequeue(): any {
     if(this.length === 0) {
       return null
     }
@@ -81,23 +80,15 @@ class Queue {
     }
     const tail = this.tail as QueueItem
     this.tail = tail.previous
-
     return tail.content
   }
 }
 
 const queue = new Queue()
 console.log(queue)
-//const item1 = new QueueItem('one')
-//const item2 = new QueueItem('two')
-//const item3 = new QueueItem('three')
-//console.log(item1)
 queue.enqueue('one')
 queue.enqueue('two')
 queue.enqueue('three')
-//console.log(queue);
-//console.log(queue.peek().content)
-//console.log(queue.peek().previous.content)
 console.log(queue.peek())
 console.log(queue.dequeue())
 console.log(queue.peek())
