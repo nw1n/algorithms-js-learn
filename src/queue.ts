@@ -52,7 +52,7 @@ class Queue {
   public length : number = 0
 
   peek(): any {
-    return this.tail ? this.tail.content : null;
+    return this.tail ? this.tail.content : undefined;
   }
 
   enqueue(content: any) {
