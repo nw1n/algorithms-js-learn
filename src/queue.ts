@@ -37,6 +37,7 @@ class QueueByChatGPT<T> {
 //console.log(queue.dequeue())
 //console.log(queue)
 
+// To do: remove "any" with a generic
 class QueueItem {
   public next?: QueueItem
   public previous?: QueueItem
