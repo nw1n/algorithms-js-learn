@@ -38,8 +38,8 @@ class QueueByChatGPT<T> {
 //console.log(queue)
 
 class QueueItem {
-  public next:QueueItem
-  public previous:QueueItem
+  public next:QueueItem | undefined
+  public previous:QueueItem | undefined
   public content:any
 
   constructor(content?) {
@@ -47,12 +47,12 @@ class QueueItem {
   }
 }
 class Queue {
-  private head:QueueItem
-  private tail:QueueItem
+  private head?: QueueItem
+  private tail?: QueueItem
   public length:number = 0
 
   peek() {
-    return this.tail;
+    return this.tail ? this.tail.content : null;
   }
 
   enqueue(content) {
@@ -62,11 +62,27 @@ class Queue {
       this.length++
       return this
     }
-    item.next = this.head
-    this.head.previous = item
+    const head = this.head as QueueItem
+    item.next = head
+    head.previous = item
     this.head = item
     this.length++
     return this
+  }
+
+  dequeue() {
+    if(this.length === 0) {
+      return null
+    }
+    if(this.length === 1) {
+      const item = this.tail as QueueItem
+      this.tail = this.head = undefined
+      return item.content
+    }
+    const tail = this.tail as QueueItem
+    this.tail = tail.previous
+
+    return tail.content
   }
 }
 
@@ -79,6 +95,15 @@ console.log(queue)
 queue.enqueue('one')
 queue.enqueue('two')
 queue.enqueue('three')
-console.log(queue);
-console.log(queue.peek().content)
-console.log(queue.peek().previous.content)
+//console.log(queue);
+//console.log(queue.peek().content)
+//console.log(queue.peek().previous.content)
+console.log(queue.peek())
+console.log(queue.dequeue())
+console.log(queue.peek())
+console.log(queue.dequeue())
+console.log(queue.peek())
+queue.enqueue('four')
+console.log(queue.peek())
+console.log(queue.dequeue())
+console.log(queue.peek())
