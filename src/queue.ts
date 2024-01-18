@@ -1,30 +1,30 @@
 class QueueByChatGPT<T> {
-  private items: T[] = [];
+    private items: T[] = []
 
-  // Add an element to the end of the queue
-  enqueue(item: T): void {
-    this.items.push(item);
-  }
+    // Add an element to the end of the queue
+    enqueue(item: T): void {
+        this.items.push(item)
+    }
 
-  // Remove and return the front element from the queue
-  dequeue(): T | undefined {
-    return this.items.shift();
-  }
+    // Remove and return the front element from the queue
+    dequeue(): T | undefined {
+        return this.items.shift()
+    }
 
-  // Return the front element without removing it
-  front(): T | undefined {
-    return this.items[0];
-  }
+    // Return the front element without removing it
+    front(): T | undefined {
+        return this.items[0]
+    }
 
-  // Check if the queue is empty
-  isEmpty(): boolean {
-    return this.items.length === 0;
-  }
+    // Check if the queue is empty
+    isEmpty(): boolean {
+        return this.items.length === 0
+    }
 
-  // Get the size of the queue
-  size(): number {
-    return this.items.length;
-  }
+    // Get the size of the queue
+    size(): number {
+        return this.items.length
+    }
 }
 
 //const queue = new QueueByChatGPT()
@@ -39,57 +39,57 @@ class QueueByChatGPT<T> {
 
 // To do: remove "any" with a generic
 class QueueItem {
-  public next?: QueueItem
-  public previous?: QueueItem
-  public content:any
+    public next?: QueueItem
+    public previous?: QueueItem
+    public content: any
 
-  constructor(content: any) {
-    this.content = content
-  }
+    constructor(content: any) {
+        this.content = content
+    }
 }
 class Queue {
-  private head?: QueueItem
-  private tail?: QueueItem
-  public length : number = 0
+    private head?: QueueItem
+    private tail?: QueueItem
+    public length: number = 0
 
-  peek(): any {
-    return this.tail ? this.tail.content : undefined;
-  }
-
-  enqueue(content: any) {
-    const item = new QueueItem(content)
-    if(this.length === 0) {
-      this.head = this.tail = item
-      this.length++
-      return
+    peek(): any {
+        return this.tail ? this.tail.content : undefined
     }
-    const head = this.head as QueueItem
-    item.next = head
-    head.previous = item
-    this.head = item
-    this.length++
-  }
 
-  dequeue(): any {
-    if(this.length === 0) {
-      return null
+    enqueue(content: any) {
+        const item = new QueueItem(content)
+        if (this.length === 0) {
+            this.head = this.tail = item
+            this.length++
+            return
+        }
+        const head = this.head as QueueItem
+        item.next = head
+        head.previous = item
+        this.head = item
+        this.length++
     }
-    if(this.length === 1) {
-      const item = this.tail as QueueItem
-      this.tail = this.head = undefined
-      this.length--
-      return item.content
-    }
-    const tail = this.tail as QueueItem
-    this.tail = tail.previous
-    this.length--
-    return tail.content
-  }
 
-  clear() {
-    this.head = this.tail = undefined
-    this.length = 0
-  }
+    dequeue(): any {
+        if (this.length === 0) {
+            return null
+        }
+        if (this.length === 1) {
+            const item = this.tail as QueueItem
+            this.tail = this.head = undefined
+            this.length--
+            return item.content
+        }
+        const tail = this.tail as QueueItem
+        this.tail = tail.previous
+        this.length--
+        return tail.content
+    }
+
+    clear() {
+        this.head = this.tail = undefined
+        this.length = 0
+    }
 }
 
 const queue = new Queue()

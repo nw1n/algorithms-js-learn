@@ -16,86 +16,86 @@ in wort case scenario. So maybe just drop this?
 */
 
 function bubbleSort(srcArr) {
-  const arr = srcArr.slice()
-  let isFinished = false
-  let end = arr.length - 1
-  let tmp
+    const arr = srcArr.slice()
+    let isFinished = false
+    let end = arr.length - 1
+    let tmp
 
-  while (!isFinished) {
-    isFinished = true
-    if(end < 0) {
-      break;
+    while (!isFinished) {
+        isFinished = true
+        if (end < 0) {
+            break
+        }
+
+        for (let i = 0; i < end; i++) {
+            if (arr[i] > arr[i + 1]) {
+                isFinished = false
+                tmp = arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = tmp
+            }
+        }
+        console.log('end:', end)
+        end = end - 1
     }
 
-    for(let i = 0; i < end; i++) {
-      if(arr[i] > arr[i+1]) {
-        isFinished = false
-        tmp = arr[i]
-        arr[i] = arr[i+1]
-        arr[i+1] = tmp
-      }
-    }
-    console.log('end:', end)
-    end = end - 1
-  }
-
-  return arr
+    return arr
 }
 
 // this is the chatGPT version of the function above.
 function myBubbleSorImporvedByChatGPT(srcArr) {
-  const arr = srcArr.slice();
-  let isSorted = false;
-  let end = arr.length - 1;
+    const arr = srcArr.slice()
+    let isSorted = false
+    let end = arr.length - 1
 
-  while (!isSorted && end >= 0) {
-      isSorted = true;
+    while (!isSorted && end >= 0) {
+        isSorted = true
 
-      for (let i = 0; i < end; i++) {
-          if (arr[i] > arr[i + 1]) {
-              [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]; // Destructuring for swapping
-              isSorted = false;
-          }
-      }
+        for (let i = 0; i < end; i++) {
+            if (arr[i] > arr[i + 1]) {
+                ;[arr[i], arr[i + 1]] = [arr[i + 1], arr[i]] // Destructuring for swapping
+                isSorted = false
+            }
+        }
 
-      end = end - 1;
-  }
+        end = end - 1
+    }
 
-  return arr;
+    return arr
 }
 
 function bubbleSortByChatGPT(arr) {
-  const n = arr.length;
+    const n = arr.length
 
-  for (let i = 0; i < n - 1; i++) {
-    for (let j = 0; j < n - 1 - i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        // Swap arr[j] and arr[j + 1]
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-      }
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap arr[j] and arr[j + 1]
+                ;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+            }
+        }
     }
-  }
 
-  return arr;
+    return arr
 }
 
 // chatGPT approves of this version i made. just laments that a for-loop might be semanticly prettier than while loop.
 function bubbleSort2(arr) {
-  const n = arr.length
-  let end = n - 1
-  let temp
+    const n = arr.length
+    let end = n - 1
+    let temp
 
-  while(end > 0) {
-    for(let i = 0; i < end; i++) {
-      if(arr[i] > arr[i+1]) {
-        temp = arr[i]
-        arr[i] = arr[i+1]
-        arr[i+1] = temp
-      }
+    while (end > 0) {
+        for (let i = 0; i < end; i++) {
+            if (arr[i] > arr[i + 1]) {
+                temp = arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = temp
+            }
+        }
+        end--
     }
-    end--
-  }
-  return arr
+    return arr
 }
 
 /*
@@ -120,7 +120,6 @@ However, in the worst case (when the array is completely unsorted), both impleme
 
 */
 
-const exampleArr = [7,3,2,8,1,9,3,1,9,4,7,2]
+const exampleArr = [7, 3, 2, 8, 1, 9, 3, 1, 9, 4, 7, 2]
 
 console.log(bubbleSort2(exampleArr))
-
