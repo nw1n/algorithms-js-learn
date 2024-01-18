@@ -80,7 +80,7 @@ function bubbleSortByChatGPT(arr) {
 }
 
 // chatGPT approves of this version i made. just laments that a for-loop might be semanticly prettier than while loop.
-function bubbleSort2(arr) {
+export function bubbleSort2(arr) {
     const n = arr.length
     let end = n - 1
     let temp
@@ -120,6 +120,6 @@ However, in the worst case (when the array is completely unsorted), both impleme
 
 */
 
-const exampleArr = [7, 3, 2, 8, 1, 9, 3, 1, 9, 4, 7, 2]
-
-console.log(bubbleSort2(exampleArr))
+// const exampleArr = [7, 3, 2, 8, 1, 9, 3, 1, 9, 4, 7, 2]
+//
+// console.log(bubbleSort2(exampleArr))

@@ -1,7 +1,14 @@
 // test.mjs
-import { sum } from '../src/sum.js'
-import assert from 'assert'
+import { bubbleSort2 } from '../src/bubbleSort.js'
+import { expect } from 'chai'
 
-it('should add two numbers from an es module', () => {
-    assert.equal(sum(3, 5), 8)
+// Mocha test suite
+describe('bubbleSort', () => {
+    // Mocha test case
+    it('should sort array', () => {
+        const src = [9, 8, 7, 1, 6, 5, 3, 2, 4]
+        const aim = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        const result = bubbleSort2(src.slice())
+        expect(result).to.eql(aim)
+    })
 })
